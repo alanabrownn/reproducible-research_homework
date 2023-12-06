@@ -46,7 +46,9 @@ This screenshot is also stored in my `Comparing_commits.png` file in this repo.
 
 To import and store the data, I used the following function:
 
-```virus_data<- read.csv("question-5-data/Cui_etal2014.csv")```
+```
+virus_data<- read.csv("question-5-data/Cui_etal2014.csv")
+```
 
 You can count the number of rows and columns by visual inspection of the table. Or, to make things quicker, you can use the functions: 
 
@@ -68,7 +70,6 @@ To fit a linear model to this data, you can log-transform both variables. I deci
 virus_data$log.Genome.length..kb.<- log(virus_data$Genome.length..kb.)
 virus_data$log.Virion.volume..nm.nm.nm. <- log(virus_data$Virion.volume..nm.nm.nm.)
 ```
-`
 Once I had obtained the log-transformed values which were now stored in my dataset, I used them to fit a linear model:
 
 ```
@@ -105,14 +106,19 @@ But how can this be interpreted? Like I said previously, to be able to fit a lin
 
 ```math 
 V = βL^α
+```
+```math
 ln(V) = ln(βL^α)
+```
 ln(V) = ln(β) + ln(L^α)
-
+```math
 ln(V) = ln(β) + αln(L)
 ```
 As you can see, this equation is in a standard linear form  y= mx + c. For this reason, the Intercept estimate represents β (scaling factor), and the Slope represents α (exponent). However, as you can see, the estimate for β must be back-transformed by raising it to the power of e, to obtain the actual value. In contrast, the estimate for α already denotes the actual value. The code used to do this was:
 
-```exp(7.0748)```
+```
+exp(7.0748)
+```
 
 **So in conclusion, the constants:**
 
@@ -140,16 +146,6 @@ To fit a linear model to a data set which follows an allometric model:
 ```math 
 V = βL^α
 ```
-
-You could take the natural logarithm (ln) of both sides of the equation: 
-
-```math 
-ln(V) = ln(BL^α)
-ln(V) = ln(B) + ln(L^α)
-ln(V) = ln(B) + αln(L)
-```
-
-Once this has been done, you are able to use linear regression analysis techniques on the transformed data. 
 
 ### D
 
