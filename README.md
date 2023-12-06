@@ -46,17 +46,15 @@ As you can see, my edited code contains 2 additions (represented by the green), 
 
 *Import the data for double-stranded DNA (dsDNA) viruses taken from the Supplementary Materials of the original paper into Posit Cloud (the csv file is in the question-5-data folder). How many rows and columns does the table have?*
 
-To import and store the data, I used the following function:
+To import the data that had already been uploaded to gitHub, I used the function read.csv(). I named my dataframe object virus_data:
 
 ```
 virus_data<- read.csv("question-5-data/Cui_etal2014.csv")
 ```
-
-You can count the number of rows and columns by visual inspection of the table. Or, to make things quicker, you can use the functions: 
-
+You could assess the number of rows and columns in the table by using the print() function and then counting them. However, a quicker way of obtaining these numbers is by using the code: 
 ```
-n_rows <- nrow(virus_data) 
-n_columns <- ncol(virus_data)
+n_rows <- nrow(virus_data) #used to count the rows
+n_columns <- ncol(virus_data) #used to count the columns
 ```
 The output of these functions tells us that: 
 - number of rows = 33 (excluding the header)
