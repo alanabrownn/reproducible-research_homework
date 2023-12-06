@@ -7,8 +7,8 @@
 *A script for simulating a random walk is provided in the question-4-code folder of this repo. Execute the code to produce the paths of two random walks. What do you observe?*
 
 My graphs:
-![Random path plots](https://github.com/lb23092/reproducible-research_homework/blob/fc3bb961097991c45b707490f93c8833d3273365/Q4_random_path_plots.png)
-These graph are also stored in my `random_path_plots.png` file in this repo.
+![Random path plots](https://github.com/lb23092/reproducible-research_homework/blob/f865e87e9b9d04e83195154ba850fb8a8451cd52/question-4-code/Q4_random_path_plots.png)
+These graphs are also stored in my `random_path_plots.png` file.
 
 These graphs demonstrate Brownian motion in 2 dimensions. They each show a single particle which starts at the position vector (0,0), and then takes 500 steps of equal length (h=0.25) in a random direction. For each step, an angle between 0-2pi (360 degrees) is drawn according to a uniform random distribution, and because of this, each movement direction is independent from one another. The legend for these graph shows the time point at which each vector was obtained, and they are coloured in a gradient from black to blue to allow for easy visualization of the direction of movement. 
 
@@ -27,16 +27,16 @@ When you ask a programming language to generate random numbers, although the out
 To make the Brownian motion simulation reproducible, I added the function set.seed() to my random_walk function. That way, every time I use this function to generate random moment, the same series of angles will be selected resulting in the same path. The input value I chose was 23. This is an arbitrary number which I selected for no particular reason. You can see how I applied this function by looking at the latest commit to the file `random_walk.R` in this repo, within the `question-4-code` file.
 
 As expected, the graphs produced by this edited code are the same, thanks to set.seed():
-![same graphs](https://github.com/lb23092/reproducible-research_homework/blob/fb72a1b55e5f02bf2d7ab1e6d87f1820c1662519/Q4_reproducible_path_plots.png)
-This graph is also stored in my `reproducible_path_plots.png` file in this repo.
+![same graphs](https://github.com/lb23092/reproducible-research_homework/blob/f865e87e9b9d04e83195154ba850fb8a8451cd52/question-4-code/Q4_reproducible_path_plots.png)
+These graphs are also stored in my `reproducible_path_plots.png` file.
 
 ### D
 
 *Go to your commit history and click on the latest commit. Show the edit you made to the code in the comparison view (add this image to the README.md of the fork)*
 
 My screenshot of the comparison view for the original code versus the edited 
-![comparing commits screenshot](https://github.com/lb23092/reproducible-research_homework/blob/fc3bb961097991c45b707490f93c8833d3273365/Q4_comparing_commits.png)
-This screenshot is also stored in my `Comparing_commits.png` file in this repo.
+![comparing commits screenshot](https://github.com/lb23092/reproducible-research_homework/blob/f865e87e9b9d04e83195154ba850fb8a8451cd52/question-4-code/Q4_comparing_commits.png)
+This image is also stored in my `Comparing_commits.png` file.
 
 ## Question 5) Viral data 
 
@@ -175,7 +175,8 @@ Actual prediction: 6698076
 
 In conclusion, our model estimates that a genome length of 300kb will have a predicted viron volume of 6698076mm3.
 
-
+## Bonus question 
+*Explain the difference between reproducibility and replicability in scientific research. How can git and GitHub be used to en- hance the reproducibility and replicability of your work? what limitations do they have?*
 
 
 
@@ -227,4 +228,4 @@ Questions 1, 2 and 3 should be answered in the **README.md** file of the `logist
 
   - What is the estimated volume of a 300 kb dsDNA virus? (4 points)
 
-**Bonus** (**10 points**) Explain the difference between reproducibility and replicability in scientific research. How can git and GitHub be used to enhance the reproducibility and replicability of your work? what limitations do they have? (e.g. check the platform [protocols.io](https://www.protocols.io/)).
+## **Bonus** Explain the difference between reproducibility and replicability in scientific research. How can git and GitHub be used to enhance the reproducibility and replicability of your work? what limitations do they have? (e.g. check the platform [protocols.io](https://www.protocols.io/)).
