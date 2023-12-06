@@ -116,10 +116,12 @@ ln(V) = ln(β) + ln(L^α)
 ```math
 ln(V) = ln(β) + αln(L)
 ```
-As you can see, this equation is in a standard linear form  y= mx + c. For this reason, the Intercept estimate represents β (scaling factor), and the Slope represents α (exponent). However, as you can see, the estimate for β must be back-transformed by raising it to the power of e, to obtain the actual value. In contrast, the estimate for α already denotes the actual value. The code used to do this was:
+As you can see, this equation is in a standard linear form  y= mx + c. For this reason, the Intercept estimate represents β (scaling factor), and the Slope represents α (exponent). These initial estimates are 7.0748 and 1.5152 respectively.
+
+However, as you can see, given that it exists as ln(β) in the final equation, the estimate for β must be back-transformed by raising it to the power of e to obtain the actual value. In contrast, the estimate for α already denotes the actual value. The code used for the back-transformation was:
 
 ```
-exp(7.0748)
+exp(7.0748) # = 1181.807
 ```
 
 **So in conclusion, the constants:**
@@ -134,7 +136,7 @@ exp(7.0748)
 
 **Interpretation**
 
-The values for these constants are statistically significant because both p-values are lower than 0.01 . This means that there are significantly different from 0. 
+The p-values associated with both the intercept and slope coefficients are less than 0.01, indicating that, at the 99% confidence level, we can reject the null hypothesis that these coefficients are zero. This suggests that both the intercept and slope are statistically significant and significantly different from zero. 
 
 **Comparison with paper**
 
