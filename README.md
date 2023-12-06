@@ -166,16 +166,18 @@ Although not exactly the same, this is my best attempt at reproducing the figure
 We can use the predict() function in ggplot2 to make predictions from our model fit:
 ```
 prediction_300kb <- predict(linear_model, data.frame(log.Genome.length..kb. = log(300)))
+prediction_300kb #=13.71733
 ```
 The model prediction = 15.71733
 
 Once we have obtained the prediction, we must back-transform it to get the actual value:
 ```
-exp(prediction_300kb) #e^
+actual_prediction <- exp(prediction_300kb) #e^
+actual_prediction #=6698076 
 ```
 Actual prediction: 6698076
 
-In conclusion, our model estimates that a genome length of 300kb will have a predicted viron volume of 6698076mm3.
+**In conclusion, our model estimates that a genome length of 300kb will have a predicted viron volume of 6698076mm3.**
 
 ## Bonus question 
 *Explain the difference between reproducibility and replicability in scientific research. How can git and GitHub be used to en- hance the reproducibility and replicability of your work? what limitations do they have?*
