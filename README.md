@@ -38,6 +38,8 @@ My screenshot of the comparison view for the original code versus the edited
 ![comparing commits screenshot](https://github.com/lb23092/reproducible-research_homework/blob/f865e87e9b9d04e83195154ba850fb8a8451cd52/question-4-code/Q4_comparing_commits.png)
 This image is also stored in my `Comparing_commits.png` file.
 
+As you can see, my edited code contains 2 additions (represented by the green), 0 deletions (otherwise represented by red).
+
 ## Question 5) Viral data 
 
 ### A
