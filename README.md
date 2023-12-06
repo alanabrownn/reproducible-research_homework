@@ -110,7 +110,9 @@ V = βL^α
 ```math
 ln(V) = ln(βL^α)
 ```
+```math
 ln(V) = ln(β) + ln(L^α)
+```
 ```math
 ln(V) = ln(β) + αln(L)
 ```
@@ -137,15 +139,6 @@ The values for these constants are statistically significant because both p-valu
 **Comparison with paper**
 
 These values are the same as those given in the dsDNA row in table 2 of the paper - which is a great sign that our analysis has worked!
-
-
-
-
-To fit a linear model to a data set which follows an allometric model:
-
-```math 
-V = βL^α
-```
 
 ### D
 
