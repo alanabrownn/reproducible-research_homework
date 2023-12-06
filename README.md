@@ -37,7 +37,135 @@ My screenshot of the comparison view for the original code versus the edited
 ![comparing commits screenshot](https://github.com/alanabrownn/reproducible-research_homework/blob/47d17d6d21afa45e5bb5372753db371756aa988b/Comparing_commits.png)
 This screenshot is also stored in my `Comparing_commits.png` file in this repo.
 
+## Question 5) Viral data 
 
+### A
+
+*Import the data for double-stranded DNA (dsDNA) viruses taken from the Supplementary Materials of the original paper into Posit Cloud (the csv file is in the question-5-data folder). How many rows and columns does the table have?*
+
+To import and store the data, I used the following function:
+
+```virus_data<- read.csv("question-5-data/Cui_etal2014.csv")```
+
+You can count the number of rows and columns by visual inspection of the table. Or, to make things quicker, you can use the functions: 
+
+```
+n_rows <- nrow(virus_data) 
+n_columns <- ncol(virus_data)
+```
+The output of these functions tells us that: 
+- number of rows = 33 (excluding the header)
+- number of columns = 13
+
+### B
+
+*What transformation can you use to fit a linear model to the data? Apply the transformation.*
+
+To fit a linear model to this data, you can log-transform both variables. I decided to specifically take the natural logarithm (ln) of Viron volume and Genome length. For this, I first created two additional columns in my virus_data dataframe, and then I applied the log() function to my initial data to output the transformed values. The code to achieve this was:
+
+```
+virus_data$log.Genome.length..kb.<- log(virus_data$Genome.length..kb.)
+virus_data$log.Virion.volume..nm.nm.nm. <- log(virus_data$Virion.volume..nm.nm.nm.)
+```
+`
+Once I had obtained the log-transformed values which were now stored in my dataset, I used them to fit a linear model:
+
+```
+linear_model <- lm(log.Virion.volume..nm.nm.nm. ~ log.Genome.length..kb., data = virus_data)
+```
+### C
+
+*Find the exponent (α) and scaling factor (β) of the allometric law for dsDNA viruses and write the p-values from the model you obtained, are they statistically significant? Compare the values you found to those shown in Table 2 of the paper, did you find the same values?*
+
+The exponent and the scaling fatcor for dsDNA viruses are given in the summary of the linear model just created. The function summary(linear_model) can be used to call this:
+
+```
+Call:
+lm(formula = log.Virion.volume..nm.nm.nm. ~ log.Genome.length..kb., 
+    data = virus_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.8523 -1.2530 -0.1026  1.0739  2.0193 
+
+Coefficients:
+                       Estimate Std. Error t value Pr(>|t|)    
+(Intercept)              7.0748     0.7693   9.196 2.28e-10 ***
+log.Genome.length..kb.   1.5152     0.1725   8.784 6.44e-10 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.263 on 31 degrees of freedom
+Multiple R-squared:  0.7134,	Adjusted R-squared:  0.7042 
+F-statistic: 77.16 on 1 and 31 DF,  p-value: 6.438e-10
+```
+
+But how can this be interpreted? Like I said previously, to be able to fit a linear model to an allometric equation, we have to log-transform it. Taking the natural logarithm of both sides of the initial equation and then simplifying it, produces the final equation: 
+
+```math 
+V = βL^α
+ln(V) = ln(βL^α)
+ln(V) = ln(β) + ln(L^α)
+
+ln(V) = ln(β) + αln(L)
+```
+As you can see, this equation is in a standard linear form  y= mx + c. For this reason, the Intercept estimate represents β (scaling factor), and the Slope represents α (exponent). However, as you can see, the estimate for β must be back-transformed by raising it to the power of e, to obtain the actual value. In contrast, the estimate for α already denotes the actual value. The code used to do this was:
+
+```exp(7.0748)```
+
+**So in conclusion, the constants:**
+
+- β (scaling factor) = 1181.807
+- α (exponent) = 1.5152 
+
+**P-values**
+
+- β = 2.28e-10***
+- α = 6.44e-10 ***
+
+**Interpretation**
+
+The values for these constants are statistically significant because both p-values are lower than 0.01 . This means that there are significantly different from 0. 
+
+**Comparison with paper**
+
+These values are the same as those given in the dsDNA row in table 2 of the paper - which is a great sign that our analysis has worked!
+
+
+
+
+To fit a linear model to a data set which follows an allometric model:
+
+```math 
+V = βL^α
+```
+
+You could take the natural logarithm (ln) of both sides of the equation: 
+
+```math 
+ln(V) = ln(BL^α)
+ln(V) = ln(B) + ln(L^α)
+ln(V) = ln(B) + αln(L)
+```
+
+Once this has been done, you are able to use linear regression analysis techniques on the transformed data. 
+
+### D
+
+*Write the code to reproduce the figure shown in the question PDF*
+
+The code I used was:
+```
+ggplot(aes(x=log.Genome.length..kb., y=log.Virion.volume..nm.nm.nm.), data = virus_data) +
+  geom_point() +
+  geom_smooth(method = "lm", colour = '#4361eE', linewidth = 0.5, se = TRUE, fill = '#A3B5C0', alpha = 0.4) + 
+  xlab("log [Genome length (kb)]") +
+  ylab("log [Virion volume (nm3)]") +
+  theme_light()
+  ```
+Although not exactly the same, this is my best attempt at reproducing the figure. As you can see within the geom_smooth() function, I picked a hex code for the regression line and the standard error which produce a similar colour scheme to that found on the graph provided. I also narrowed the width of my line, and labelled my axes with the same titles. Finally, I selected the light theme because I believe it is the most similar to what is used. The graph I produced can be seen below:
+
+![Reproduced graph](https://github.com/lb23092/logistic_growth/blob/018418195f52b346d5028fdb2fc3171d9f435e2d/Q5_reproduced_plot.png)
 
 
 
