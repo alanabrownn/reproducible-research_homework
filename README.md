@@ -157,8 +157,23 @@ Although not exactly the same, this is my best attempt at reproducing the figure
 
 ![Reproduced graph](https://github.com/lb23092/reproducible-research_homework/blob/971f19681696119b3cb6f7816951a1a34d8b6011/Q5_reproduced_plot.png)
 
+### E
 
+*What is the estimated volume of a 300 kb dsDNA virus?*
 
+We can use the predict() function in ggplot2 to make predictions from our model fit:
+```
+prediction_300kb <- predict(linear_model, data.frame(log.Genome.length..kb. = log(300)))
+```
+The model prediction = 15.71733
+
+Once we have obtained the prediction, we must back-transform it to get the actual value:
+```
+exp(prediction_300kb) #e^
+```
+Actual prediction: 6698076
+
+In conclusion, our model estimates that a genome length of 300kb will have a predicted viron volume of 6698076mm3.
 
 
 
