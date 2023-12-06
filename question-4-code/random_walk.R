@@ -49,7 +49,7 @@ data2 <- random_walk(500)
 
 plot2 <- ggplot(aes(x = x, y = y), data = data2) +
   
-  geom_path(aes(colour = time)) +
+  geom_path(aes(colour = time)) + 
   
   theme_bw() +
   
