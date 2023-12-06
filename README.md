@@ -24,9 +24,9 @@ When you ask a programming language to generate random numbers, although the out
 
 *Edit the script to make a reproducible simulation of Brownian motion. Commit the file and push it to your forked reproducible-research homework repo.*
 
-To make the Brownian motion simulation reproducible, I added the function set.seed() to my random_walk function. That way, every time I use this function to generate random moment, the same series of angles will be selected resulting in the same path. The input value I chose was 23. This is an arbitrary number which I selected for no particular reason. You can see how I applied this function by looking at the latest commit to the file `random_walk.R` in this repo, within the `question-4-code` file.
+To make the Brownian motion simulation reproducible, I added the function set.seed() to my random_walk function. That way, every time I use this function to generate random movement, the same series of angles will be selected, and given that h remains constant, you will obtain exactly the same path. The input value I chose was 23. This is an arbitrary number which I selected for no particular reason. You can see how I applied this function by looking at the latest commit to the file `random_walk.R` in this repo, within the `question-4-code` file.
 
-As expected, the graphs produced by this edited code are the same, thanks to set.seed():
+Unlike when using the original code, this edited code produces two *identical* graphs with the same path, as expected when you set the seed: 
 ![same graphs](https://github.com/lb23092/reproducible-research_homework/blob/f865e87e9b9d04e83195154ba850fb8a8451cd52/question-4-code/Q4_reproducible_path_plots.png)
 These graphs are also stored in my `reproducible_path_plots.png` file.
 
