@@ -1,5 +1,5 @@
 # Reproducible research: version control and R
-## Question 1-3
+## Question 1-3)
 Find these answers in my `logistic_growth` repo: https://github.com/lb23092/logistic_growth.git
 ## Question 4) Modelling Brownian motion 
 
