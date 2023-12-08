@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Reproducible research: version control and R
 
 ## Questions 1-3)
